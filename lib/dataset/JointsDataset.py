@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 class JointsDataset(Dataset):
-    def __init__(self, cfg, root, image_set, is_train, transform=None):
+    def __init__(self, cfg, root, anno_root, image_set, is_train, transform=None):
         self.num_joints = 0
         self.pixel_std = 200
         self.flip_pairs = []
@@ -34,6 +34,7 @@ class JointsDataset(Dataset):
 
         self.is_train = is_train
         self.root = root
+        self.anno_root = anno_root
         self.image_set = image_set
 
         self.output_path = cfg.OUTPUT_DIR

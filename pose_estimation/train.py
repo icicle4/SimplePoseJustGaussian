@@ -137,6 +137,7 @@ def main():
     train_dataset = eval('dataset.'+config.DATASET.DATASET)(
         config,
         config.DATASET.ROOT,
+        config.DATASET.ANNO_ROOT,
         config.DATASET.TRAIN_SET,
         True,
         transforms.Compose([

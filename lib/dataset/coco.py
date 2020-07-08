@@ -51,8 +51,8 @@ class COCODataset(JointsDataset):
         [16,14],[14,12],[17,15],[15,13],[12,13],[6,12],[7,13], [6,7],[6,8],
         [7,9],[8,10],[9,11],[2,3],[1,2],[1,3],[2,4],[3,5],[4,6],[5,7]]
     '''
-    def __init__(self, cfg, root, image_set, is_train, transform=None):
-        super().__init__(cfg, root, image_set, is_train, transform)
+    def __init__(self, cfg, root, anno_root, image_set, is_train, transform=None):
+        super().__init__(cfg, root, anno_root, image_set, is_train, transform)
         self.nms_thre = cfg.TEST.NMS_THRE
         self.image_thre = cfg.TEST.IMAGE_THRE
         self.oks_thre = cfg.TEST.OKS_THRE
@@ -98,7 +98,7 @@ class COCODataset(JointsDataset):
         """ self.root / annotations / person_keypoints_train2017.json """
         prefix = 'person_keypoints' \
             if 'test' not in self.image_set else 'image_info'
-        return os.path.join(self.root, 'annotations',
+        return os.path.join(self.anno_root, 'annotations',
                             prefix + '_' + self.image_set + '.json')
 
     def _load_image_set_index(self):

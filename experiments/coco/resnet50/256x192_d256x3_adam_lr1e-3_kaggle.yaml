@@ -8,6 +8,7 @@ PRINT_FREQ: 100
 DATASET:
   DATASET: 'coco'
   ROOT: '../input/coco2017'
+  ANNO_ROOT: '../input/coco2017/annotations_trainval2017'
   TEST_SET: 'val2017'
   TRAIN_SET: 'train2017'
   FLIP: true
