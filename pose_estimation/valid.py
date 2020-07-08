@@ -120,6 +120,7 @@ def main():
     model = eval('models.'+config.MODEL.NAME+'.get_pose_net')(
         config, is_train=False
     )
+    wandb.watch(model, log="all")
 
     if config.TEST.MODEL_FILE:
         logger.info('=> loading model from {}'.format(config.TEST.MODEL_FILE))
