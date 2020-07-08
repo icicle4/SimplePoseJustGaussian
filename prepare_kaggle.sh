@@ -12,3 +12,9 @@ pwd
 wget https://s3.amazonaws.com/pytorch/models/resnet50-19c8e357.pth
 
 cd ../..
+
+pip install -r requirements.txt
+
+cd lib
+make
+cd ..
