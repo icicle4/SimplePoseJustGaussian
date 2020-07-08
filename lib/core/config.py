@@ -63,6 +63,7 @@ config.LOSS.USE_TARGET_WEIGHT = True
 # DATASET related params
 config.DATASET = edict()
 config.DATASET.ROOT = ''
+config.DATASET.ANNO_ROO = ''
 config.DATASET.DATASET = 'mpii'
 config.DATASET.TRAIN_SET = 'train'
 config.DATASET.TEST_SET = 'valid'
