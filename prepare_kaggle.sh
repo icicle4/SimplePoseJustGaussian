@@ -24,3 +24,5 @@ cd COCO/PythonAPI
 # Install into global site-packages
 make install
 cd ../..
+
+pip install wandb
