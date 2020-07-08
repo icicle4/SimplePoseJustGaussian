@@ -85,7 +85,7 @@ def main():
 
     logger.info(pprint.pformat(args))
     logger.info(pprint.pformat(config))
-
+    wandb.login(key="e53338ee286c49fe2efef0a990fabf8fcbcaae04")
     wandb.init(entity='icicle314', project='SimplePose')
     wandb.watch_called = False
 
