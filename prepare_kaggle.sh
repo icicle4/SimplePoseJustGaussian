@@ -18,3 +18,9 @@ pip install -r requirements.txt
 cd lib
 make
 cd ..
+
+git clone https://github.com/cocodataset/cocoapi.git COCO
+cd COCO/PythonAPI
+# Install into global site-packages
+make install
+cd ../..
