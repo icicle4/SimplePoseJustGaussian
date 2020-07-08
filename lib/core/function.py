@@ -20,7 +20,7 @@ from core.evaluate import accuracy
 from core.inference import get_final_preds
 from utils.transforms import flip_back
 from utils.vis import save_debug_images
-
+import wandb
 
 logger = logging.getLogger(__name__)
 
@@ -84,6 +84,12 @@ def train(config, train_loader, model, criterion, optimizer, epoch,
             prefix = '{}_{}'.format(os.path.join(output_dir, 'train'), i)
             save_debug_images(config, input, meta, target, pred*4, output,
                               prefix)
+
+    wandb.log({
+        'train loss': losses.avg,
+        'train acc': acc.avg
+    })
+
 
 
 def validate(config, val_loader, val_dataset, model, criterion, output_dir,
@@ -199,6 +205,13 @@ def validate(config, val_loader, val_dataset, model, criterion, output_dir,
             else:
                 writer.add_scalars('valid', dict(name_values), global_steps)
             writer_dict['valid_global_steps'] = global_steps + 1
+
+    wandb.log(
+        {'val loss': losses.avg,
+         'val acc': acc.avg,
+         'AP': perf_indicator
+         }
+    )
 
     return perf_indicator
 
