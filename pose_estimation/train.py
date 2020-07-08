@@ -148,6 +148,7 @@ def main():
     valid_dataset = eval('dataset.'+config.DATASET.DATASET)(
         config,
         config.DATASET.ROOT,
+        config.DATASET.ANNO_ROOT,
         config.DATASET.TEST_SET,
         False,
         transforms.Compose([
