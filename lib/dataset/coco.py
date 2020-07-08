@@ -222,7 +222,7 @@ class COCODataset(JointsDataset):
         data_name = prefix + '.zip@' if self.data_format == 'zip' else prefix
 
         image_path = os.path.join(
-            self.root, 'images', data_name, file_name)
+            self.root, data_name, data_name, file_name)
 
         return image_path
 
