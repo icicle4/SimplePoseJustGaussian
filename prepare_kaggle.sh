@@ -7,6 +7,7 @@ cd data/coco/person_detection_results
 wget "https://drive.google.com/uc?export=download&id=1ygw57X-mh0QBfENB-U5DsuSauGIu-8RB" -O COCO_val2017_detections_AP_H_56_person.json
 cd ../../..
 
+
 cd models/pytorch/imagenet
 pwd
 wget https://s3.amazonaws.com/pytorch/models/resnet50-19c8e357.pth

@@ -81,9 +81,9 @@ def train(config, train_loader, model, criterion, optimizer, epoch,
             writer.add_scalar('train_acc', acc.val, global_steps)
             writer_dict['train_global_steps'] = global_steps + 1
 
-            prefix = '{}_{}'.format(os.path.join(output_dir, 'train'), i)
-            save_debug_images(config, input, meta, target, pred*4, output,
-                              prefix)
+            # prefix = '{}_{}'.format(os.path.join(output_dir, 'train'), i)
+            # save_debug_images(config, input, meta, target, pred*4, output,
+            #                   prefix)
 
     wandb.log({
         'train loss': losses.avg,
@@ -179,9 +179,9 @@ def validate(config, val_loader, val_dataset, model, criterion, output_dir,
                           loss=losses, acc=acc)
                 logger.info(msg)
 
-                prefix = '{}_{}'.format(os.path.join(output_dir, 'val'), i)
-                save_debug_images(config, input, meta, target, pred*4, output,
-                                  prefix)
+                # prefix = '{}_{}'.format(os.path.join(output_dir, 'val'), i)
+                # save_debug_images(config, input, meta, target, pred*4, output,
+                #                   prefix)
 
         name_values, perf_indicator = val_dataset.evaluate(
             config, all_preds, output_dir, all_boxes, image_path,
