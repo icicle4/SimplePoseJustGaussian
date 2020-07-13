@@ -47,7 +47,6 @@ def parse_args():
                         help='experiment configure file name',
                         required=True,
                         type=str)
-
     args, rest = parser.parse_known_args()
     # update config
     update_config(args.cfg)
@@ -63,7 +62,10 @@ def parse_args():
     parser.add_argument('--workers',
                         help='num of dataloader workers',
                         type=int)
-
+    parser.add_argument('--resume',
+                        default=None,
+                        type=str
+                        )
     args = parser.parse_args()
 
     return args
@@ -130,6 +132,20 @@ def main():
     lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(
         optimizer, config.TRAIN.LR_STEP, config.TRAIN.LR_FACTOR
     )
+
+    if args.resume:
+        if os.path.isfile(args.resume):
+            print("=> loading checkpoint '{}'".format(args.resume))
+            checkpoint = torch.load(args.resume)
+            args.start_epoch = checkpoint['epoch']
+            best_perf = checkpoint['perf']
+            model.load_state_dict(checkpoint['state_dict'])
+            optimizer.load_state_dict(checkpoint['optimizer'])
+            print("=> loaded checkpoint '{}' (epoch {})"
+                  .format(args.resume, checkpoint['epoch']))
+    else:
+        best_perf = 0.0
+        args.start_epoch = 0
 
     # Data loading code
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
