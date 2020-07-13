@@ -190,7 +190,7 @@ def main():
 
     best_perf = 0.0
     best_model = False
-    for epoch in range(config.TRAIN.BEGIN_EPOCH, config.TRAIN.END_EPOCH):
+    for epoch in range(args.start_epoch, config.TRAIN.END_EPOCH):
         lr_scheduler.step()
 
         # train for one epoch
